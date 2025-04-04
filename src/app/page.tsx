@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchCocktails = async () => {
-      const response = await axios.get(`api/cocktails/${letter}`);
+      const response = await axios.get(`api/cocktails`, { params: { letter } });
       if (response.data.drinks) {
         setCocktails(response.data.drinks);
       }
