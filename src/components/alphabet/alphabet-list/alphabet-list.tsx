@@ -17,7 +17,7 @@ const AlphabetList = ({
 
   return (
     <div className="w-full flex justify-center">
-      <ul className="flex w-3/4 justify-between">
+      <ul className="flex flex-wrap justify-center gap-2 max-w-3xl">
         {alphabet.map((letter) => (
           <li
             onClick={() => onClick(letter)}

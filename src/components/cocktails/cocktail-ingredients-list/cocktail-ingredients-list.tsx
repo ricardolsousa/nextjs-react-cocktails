@@ -1,3 +1,4 @@
+import Ingredient from "@/components/ingredients/ingredient/ingredient";
 import { Cocktail } from "../cocktails-list/cocktails-list";
 
 interface CocktailIngredientsListProps {
@@ -16,14 +17,15 @@ const CocktailIngredientsList = ({
   );
 
   return (
-    <span className="text-white">
+    <span className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-2">
       {ingredientKeys.map((ingredient, index) => {
         if (!cocktail[ingredient]) {
           return;
         }
         return (
-          <div key={index}>
-            {cocktail[ingredient]}: {cocktail[measureKeys[index]]}
+          <div className="flex flex-col items-center" key={index}>
+            <Ingredient name={cocktail[ingredient]} />
+            <span className="text-sm">{cocktail[measureKeys[index]]}</span>
           </div>
         );
       })}
