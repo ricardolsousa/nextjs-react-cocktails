@@ -1,12 +1,14 @@
 "use client";
 
+import CocktailDetails from "@/components/cocktails/cocktail-details/cocktail-details";
+import { Cocktail } from "@/components/cocktails/cocktails-list/cocktails-list";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const CocktailDetailsPage = () => {
   const { id } = useParams();
-  const [cocktailDetails, setCocktailDetails] = useState<any>({});
+  const [cocktail, setCocktail] = useState<Cocktail | null>(null);
 
   useEffect(() => {
     const fetchCocktailDetails = async () => {
@@ -14,7 +16,7 @@ const CocktailDetailsPage = () => {
         `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
       );
       if (response.data.drinks) {
-        setCocktailDetails(response.data.drinks);
+        setCocktail(response.data.drinks[0]);
       }
     };
 
@@ -23,8 +25,14 @@ const CocktailDetailsPage = () => {
     }
   }, [id]);
 
+  if (!cocktail) {
+    return <p>Cocktail não encontrado!</p>;
+  }
+
   return (
-    <div className="text-white">{JSON.stringify(cocktailDetails, null, 2)}</div>
+    <div className="flex justify-center">
+      <CocktailDetails cocktail={cocktail} />
+    </div>
   );
 };
 

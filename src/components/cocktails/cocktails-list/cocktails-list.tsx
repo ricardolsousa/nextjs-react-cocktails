@@ -8,6 +8,7 @@ export interface Cocktail {
   strAlcoholic: string;
   strGlass: string;
   strInstructions: string;
+  [others: string]: string;
 }
 
 interface CocktailsListProps {
