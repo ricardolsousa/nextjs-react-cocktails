@@ -25,7 +25,10 @@ const Header = () => {
       <PopoverGroup className="hidden lg:flex lg:gap-x-12">
         <Popover className="relative">
           <div className="flex gap-6 divide-x divide-gray-900/5">
-            <Link href="/" className="text-xl font-bold text-white">
+            <Link
+              href="/search-cocktails"
+              className="text-xl font-bold text-white"
+            >
               Search
             </Link>
             <Link
@@ -63,7 +66,7 @@ const Header = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="flex flex-col space-y-2 py-6">
                 <Link
-                  href="/"
+                  href="/search-cocktails"
                   className="text-white text-xl font-bold"
                   onClick={() => setMobileMenuOpen(false)}
                 >
