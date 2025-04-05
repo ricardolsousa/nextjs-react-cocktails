@@ -17,7 +17,7 @@ const CocktailItem = ({ cocktail }: CocktailItemProps) => {
   return (
     <Link href={`/cocktails/${cocktail.idDrink}`}>
       <div
-        className="flex flex-col bg-stone-800 text-white rounded-xl p-2 cursor-pointer"
+        className="flex flex-col bg-stone-800 text-white rounded-xl p-2 cursor-pointer min-h-75"
         onClick={onClick}
       >
         <div className="relative h-60">

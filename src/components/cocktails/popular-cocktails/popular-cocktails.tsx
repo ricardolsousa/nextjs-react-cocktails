@@ -3,15 +3,18 @@
 import CocktailsList from "@/components/cocktails/cocktails-list/cocktails-list";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import CocktailSkeleton from "../cocktail-skeleton/cocktail-skeleton";
 
 const PopularCocktails = () => {
   const [popularCocktails, setPopularCocktails] = useState<[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPopularCocktails = async () => {
       const response = await axios.get(`api/cocktails/popular`);
       if (response.data.drinks) {
         setPopularCocktails(response.data.drinks);
+        setLoading(false);
       }
     };
 
@@ -21,7 +24,11 @@ const PopularCocktails = () => {
   return (
     <>
       <span className="text-white text-3xl font-bold">Popular Cocktails</span>
-      <CocktailsList cocktails={popularCocktails.slice(0, 8)} />
+      {loading ? (
+        <CocktailSkeleton />
+      ) : (
+        <CocktailsList cocktails={popularCocktails.slice(0, 8)} />
+      )}
     </>
   );
 };
