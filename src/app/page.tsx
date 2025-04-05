@@ -2,6 +2,7 @@
 
 import AlphabetList from "@/components/alphabet/alphabet-list/alphabet-list";
 import CocktailsList from "@/components/cocktails/cocktails-list/cocktails-list";
+import PopularCocktails from "@/components/cocktails/popular-cocktails/popular-cocktails";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -41,8 +42,7 @@ export default function Home() {
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
-        <span className="text-white text-3xl font-bold">Popular Cocktails</span>
-        <CocktailsList cocktails={popularCocktails.slice(0, 8)} />
+        <PopularCocktails />
         <span className="text-white text-3xl font-bold">Latest Cocktails</span>
         <CocktailsList cocktails={latestCocktails.slice(0, 8)} />
         <AlphabetList selectedLetter={letter} setSelectedLetter={setLetter} />
