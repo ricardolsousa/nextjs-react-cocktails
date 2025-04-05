@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [cocktails, setCocktails] = useState<[]>([]);
   const [popularCocktails, setPopularCocktails] = useState<[]>([]);
+  const [latestCocktails, setLatestCocktails] = useState<[]>([]);
   const [letter, setLetter] = useState<string>("A");
 
   useEffect(() => {
@@ -17,6 +18,15 @@ export default function Home() {
         setPopularCocktails(response.data.drinks);
       }
     };
+
+    const fetchLatestCocktails = async () => {
+      const response = await axios.get(`api/cocktails/latest`);
+      if (response.data.drinks) {
+        setLatestCocktails(response.data.drinks);
+      }
+    };
+    fetchLatestCocktails();
+
     fetchPopularCocktails();
 
     const fetchCocktails = async () => {
@@ -32,7 +42,9 @@ export default function Home() {
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
         <span className="text-white text-3xl font-bold">Popular Cocktails</span>
-        <CocktailsList cocktails={popularCocktails} />
+        <CocktailsList cocktails={popularCocktails.slice(0, 8)} />
+        <span className="text-white text-3xl font-bold">Latest Cocktails</span>
+        <CocktailsList cocktails={latestCocktails.slice(0, 8)} />
         <AlphabetList selectedLetter={letter} setSelectedLetter={setLetter} />
         <CocktailsList cocktails={cocktails} />
       </main>
