@@ -11,7 +11,7 @@ const LatestCocktails = () => {
 
   useEffect(() => {
     const fetchLatestCocktails = async () => {
-      const response = await axios.get(`api/cocktails/latest`);
+      const response = await axios.get(`/api/cocktails/latest`);
       if (response.data.drinks) {
         setLatestCocktails(response.data.drinks);
         setLoading(false);

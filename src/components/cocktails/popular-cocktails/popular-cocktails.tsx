@@ -11,7 +11,7 @@ const PopularCocktails = () => {
 
   useEffect(() => {
     const fetchPopularCocktails = async () => {
-      const response = await axios.get(`api/cocktails/popular`);
+      const response = await axios.get(`/api/cocktails/popular`);
       if (response.data.drinks) {
         setPopularCocktails(response.data.drinks);
         setLoading(false);
