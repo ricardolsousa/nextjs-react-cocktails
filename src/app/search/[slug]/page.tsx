@@ -1,6 +1,9 @@
 "use client";
 
-import { Cocktail } from "@/components/cocktails/cocktails-list/cocktails-list";
+import CocktailSkeleton from "@/components/cocktails/cocktail-skeleton/cocktail-skeleton";
+import CocktailsList, {
+  Cocktail,
+} from "@/components/cocktails/cocktails-list/cocktails-list";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -41,9 +44,19 @@ const SearchCocktailsPage = () => {
   }, [safeSlug]);
 
   return (
-    <div className="text-white">
-      {slug}
-      {JSON.stringify(cocktails, null, 2)}
+    <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
+        <span className="text-white text-3xl font-bold">
+          Search by{" "}
+          {categories.find((c) => c.slug === safeSlug)?.label ||
+            alcoholicStatus.find((a) => a.slug === safeSlug)?.label}
+        </span>
+        {loading ? (
+          <CocktailSkeleton />
+        ) : (
+          <CocktailsList cocktails={cocktails} />
+        )}
+      </main>
     </div>
   );
 };

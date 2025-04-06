@@ -10,15 +10,15 @@ export async function GET(request: NextRequest) {
     let res;
     if (alcoholic) {
       res = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${alcoholic}`
+        `https://www.thecocktaildb.com/api/json/v2/${process.env.NEXT_API}/filter.php?a=${alcoholic}`
       );
     } else if (category) {
       res = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+        `https://www.thecocktaildb.com/api/json/v2/${process.env.NEXT_API}/filter.php?c=${category}`
       );
     } else if (glass) {
       res = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass}`
+        `https://www.thecocktaildb.com/api/json/v2/${process.env.NEXT_API}/filter.php?g=${glass}`
       );
     }
 

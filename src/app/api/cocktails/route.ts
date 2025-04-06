@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
     const letter = request.nextUrl.searchParams.get("letter");
 
     const res = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.NEXT_API}/search.php?f=${letter}`
     );
 
     if (!res.ok) {

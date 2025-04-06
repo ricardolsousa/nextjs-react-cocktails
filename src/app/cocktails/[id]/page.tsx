@@ -13,7 +13,7 @@ const CocktailDetailsPage = () => {
   useEffect(() => {
     const fetchCocktailDetails = async () => {
       const response = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+        `https://www.thecocktaildb.com/api/json/v2/${process.env.NEXT_API}/lookup.php?i=${id}`
       );
       if (response.data.drinks) {
         setCocktail(response.data.drinks[0]);
