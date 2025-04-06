@@ -4,10 +4,10 @@ import CocktailSkeleton from "@/components/cocktails/cocktail-skeleton/cocktail-
 import CocktailsList, {
   Cocktail,
 } from "@/components/cocktails/cocktails-list/cocktails-list";
+import { alcoholicStatus, categories } from "@/constants/constants";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { alcoholicStatus, categories } from "../page";
 
 const SearchCocktailsPage = () => {
   const { slug } = useParams();
