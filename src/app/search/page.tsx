@@ -1,4 +1,5 @@
 import SearchItem from "@/components/search/search-item/search-item";
+import SearchList from "@/components/search/search-list/search-list";
 
 export const alcoholicStatus = [
   { label: "Alcoholic", value: "Alcoholic", slug: "alcoholic" },
@@ -52,26 +53,16 @@ const SearchPage = () => {
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col row-start-2 items-center sm:items-start w-full gap-8">
-        <div className="w-full flex flex-col gap-4">
-          <span className="text-white text-3xl font-bold">
-            Search by Alcoholic
-          </span>
-          <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4">
-            {alcoholicStatus.map((item, index) => (
-              <SearchItem key={`${item.slug}-${index}`} item={item} />
-            ))}
-          </div>
-        </div>
-        <div className="w-full flex flex-col gap-4">
-          <span className="text-white text-3xl font-bold">
-            Search by Category
-          </span>
-          <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4">
-            {categories.map((item, index) => (
-              <SearchItem key={`${item.slug}-${index}`} item={item} />
-            ))}
-          </div>
-        </div>
+        <SearchList label="Search by Alcoholic">
+          {alcoholicStatus.map((item, index) => (
+            <SearchItem key={`${item.slug}-${index}`} item={item} />
+          ))}
+        </SearchList>
+        <SearchList label="Search by Category">
+          {categories.map((item, index) => (
+            <SearchItem key={`${item.slug}-${index}`} item={item} />
+          ))}
+        </SearchList>
       </main>
     </div>
   );
