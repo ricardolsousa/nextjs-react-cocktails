@@ -21,6 +21,9 @@ const CocktailsPage = () => {
       if (response.data.drinks) {
         setCocktails(response.data.drinks);
         setLoading(false);
+      } else {
+        setCocktails([]);
+        setLoading(false);
       }
     };
     fetchCocktails();
@@ -33,7 +36,15 @@ const CocktailsPage = () => {
         {loading ? (
           <CocktailSkeleton />
         ) : (
-          <CocktailsList cocktails={cocktails} />
+          <>
+            {cocktails.length ? (
+              <CocktailsList cocktails={cocktails} />
+            ) : (
+              <p className="w-full text-center mt-[32px] text-white font-bold text-3xl">
+                There are no cocktails!
+              </p>
+            )}
+          </>
         )}
       </main>
     </div>
