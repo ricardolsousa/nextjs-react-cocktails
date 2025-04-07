@@ -15,7 +15,7 @@ const CocktailItem = ({ cocktail }: CocktailItemProps) => {
             src={cocktail.strDrinkThumb}
             alt={cocktail.idDrink}
             fill
-            className="rounded-xl"
+            className="rounded-xl object-cover"
           />
         </div>
         <div className="flex flex-col grow justify-between py-2">

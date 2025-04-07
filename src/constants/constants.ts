@@ -11,8 +11,23 @@ export const categories = [
   },
   {
     label: "Ordinary Drink",
-    value: "Ordinary_Drink",
+    value: "Ordinary Drink",
     slug: "ordinary-drink",
+  },
+  {
+    label: "Punch / Party Drink",
+    value: "Punch / Party Drink",
+    slug: "punch-party-drink",
+  },
+  {
+    label: "Other / Unknown",
+    value: "Other / Unknown",
+    slug: "other-unknown",
+  },
+  {
+    label: "Coffee / Tea",
+    value: "Coffee / Tea",
+    slug: "coffee-tea",
   },
   {
     label: "Shake",
@@ -31,7 +46,7 @@ export const categories = [
   },
   {
     label: "Homemade Liqueur",
-    value: "Homemade_Liqueur",
+    value: "Homemade Liqueur",
     slug: "homemade-liqueur",
   },
   {
@@ -41,7 +56,7 @@ export const categories = [
   },
   {
     label: "Soft Drink",
-    value: "Soft_Drink",
+    value: "Soft Drink",
     slug: "soft-drink",
   },
 ];
