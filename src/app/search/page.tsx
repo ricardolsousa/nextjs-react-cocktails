@@ -1,6 +1,6 @@
 import SearchItem from "@/components/search/search-item/search-item";
 import SearchList from "@/components/search/search-list/search-list";
-import { alcoholicStatus, categories } from "@/constants/constants";
+import { alcoholicStatus, categories, glasses } from "@/constants/constants";
 
 const SearchPage = () => {
   return (
@@ -13,6 +13,11 @@ const SearchPage = () => {
         </SearchList>
         <SearchList label="Search by Category">
           {categories.map((item, index) => (
+            <SearchItem key={`${item.slug}-${index}`} item={item} />
+          ))}
+        </SearchList>
+        <SearchList label="Search by Glass">
+          {glasses.map((item, index) => (
             <SearchItem key={`${item.slug}-${index}`} item={item} />
           ))}
         </SearchList>

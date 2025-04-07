@@ -4,7 +4,7 @@ import CocktailSkeleton from "@/components/cocktails/cocktail-skeleton/cocktail-
 import CocktailsList, {
   Cocktail,
 } from "@/components/cocktails/cocktails-list/cocktails-list";
-import { alcoholicStatus, categories } from "@/constants/constants";
+import { alcoholicStatus, categories, glasses } from "@/constants/constants";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,11 +21,14 @@ const SearchCocktailsPage = () => {
 
       const matchedCategory = categories.find((c) => c.slug === safeSlug);
       const matchedAlcoholic = alcoholicStatus.find((c) => c.slug === safeSlug);
+      const matchedGlass = glasses.find((c) => c.slug === safeSlug);
 
       if (matchedCategory) {
         params = { category: matchedCategory.value };
       } else if (matchedAlcoholic) {
         params = { alcoholic: matchedAlcoholic.value };
+      } else if (matchedGlass) {
+        params = { glass: matchedGlass.value };
       }
 
       const response = await axios.get(`/api/cocktails/search`, { params });
@@ -49,7 +52,8 @@ const SearchCocktailsPage = () => {
         <span className="text-white text-3xl font-bold">
           Search by{" "}
           {categories.find((c) => c.slug === safeSlug)?.label ||
-            alcoholicStatus.find((a) => a.slug === safeSlug)?.label}
+            alcoholicStatus.find((a) => a.slug === safeSlug)?.label ||
+            glasses.find((g) => g.slug === safeSlug)?.label}
         </span>
         {loading ? (
           <CocktailSkeleton />
